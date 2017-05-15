@@ -14,21 +14,20 @@ Now have fun (or not) with this masterpiece 👍
 ```
 ram[65535]
 reg[16] - implement as stack, programms may not pop at len 0, not pul at len 16
-flag[c,b] - flags only change on add/sub
+flag[b] - flags only change on add/sub
 ip
 
 U-000A ret     (exit the application and return reg [0] as exit code)
 U-2000 pul RAM (set value to reg [0], shifts upwards)
 U-2001 pop RAM (set ram to reg [0], shift downwards, fill with 0)
-U-2002 add VAL (add VAL to reg [0], set [c]arry flag, sets [b]ound flag on overflow)
+U-2002 add VAL (add VAL to reg [0], sets [b]ound flag on overflow)
 U-2003 sub VAL (subtract VAL from reg [0], sets [b]ound flag on underflow)
 U-2004 big IPI (jump ip if reg [0] is > 0 for +- {IPI}ncrement)
 U-2005 sml IPI (jump ip if reg [0] is < 0 for +- {IPI}ncrement)
-U-2006 flc IPI (jump ip if [c]array flag is set)
-U-2007 flb IPI (jump ip if [b]ound flag is set)
-U-2008 jmp IPI (just jump ip)
-U-2009 tbl LEN (from ip+1 to ip+1+LEN search reg [0], jump value from ip+1+LEN+found or goto ip+1+LEN+LEN otherwise)
-U-3000 sys     (use OUT as input for a system() call, reg [0] will receive return value, INOUT binding will receive the first byte from the other apps STDOUT)
+U-2006 flb IPI (jump ip if [b]ound flag is set)
+U-2007 jmp IPI (just jump ip)
+U-2008 tbl LEN (from ip+1 to ip+1+LEN search reg [0], jump value from ip+1+LEN+found or goto ip+1+LEN+LEN otherwise)
+U-2009 sys     (use OUT as input for a system() call, reg [0] will receive return value, INOUT binding will receive the first byte from the other apps STDOUT)
 
 VAL/IPI may be a RAM, REG or LITERAL NUMBER
 LEN is LITERAL NUMBER
