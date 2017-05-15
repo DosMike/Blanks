@@ -1,0 +1,2 @@
+# Blanks
+Totally useless language
