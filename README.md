@@ -27,7 +27,11 @@ U-2005 sml IPI (jump ip if reg [0] is < 0 for +- {IPI}ncrement)
 U-2006 flb IPI (jump ip if [b]ound flag is set)
 U-2007 jmp IPI (just jump ip)
 U-2008 tbl LEN (from ip+1 to ip+1+LEN search reg [0], load value from ip+1+LEN+found to reg [0] or ip+1+LEN+LEN otherwise)
-U-2009 sys     (use OUT as input for a system() call, reg [0] will receive return value, INOUT binding will receive the first byte from the other apps STDOUT)
+U-2009 wrt VAL (write the next char to the output buffer)
+U-200A red     (read next char from input buffer to reg [0], shifts upwards)
+U-200B sys     (use OUT as input for a system() call, reg [0] will receive return value, INOUT binding will receive the first byte from the other apps STDOUT)
+U-202F flw     (flush writer, reset output buffer)
+U-205F flr     (flush reader, reset input buffer)
 
 Arguments may be a RAM, REG or LITERAL NUMBER
 
